@@ -12,6 +12,12 @@ connectDB();
 
 app.use('/api/users', userRoutes)
 
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src * 'self' blob: data:;");
+  next();
+});
+
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`)
 })
