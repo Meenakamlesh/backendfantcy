@@ -6,7 +6,7 @@ import userModel from "../models/user-model.js";
 export const getLeaderboard = async (req, res) => {
     try {
       const user = await userModel.find().sort({totalPoints : -1});
-      res.json(user);
+      res.json({user});
     } catch (error) {
         console.log("User not found");
     }
